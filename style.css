@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&family=Righteous&display=swap');
+
+/* Hero Image */
+
+
+#hero{
+    min-height: 100vh;
+    background-color: #997950;
+    align-items: center;
+    display: flex;
+    font-family: 'Righteous';
+    color: white;
+    background-image: url(img/hero-image.svg), url(img/Megamendung.svg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    text-shadow: 2px 2px black;
+}
+
+
+/* navbar */
+
+#navbar{
+    background-color: #55423D;
+    margin-top: .25px;
+    padding: 35px;
+    font-family: 'Righteous';
+    color: #fffffe !important;
+}
+.nav-link{
+    color: #fffffe !important;
+}
+
+
+/* About */
+
+#tentang{
+    background-color: #55423D;
+    color: #fffffe;
+    font-family: 'Outfit';
+    min-height: 500px;
+}
+
+
+/* Artikel */
+
+
+
+#artikel{
+    background-color: #55423D;
+    color: #fffffe;
+    font-family: 'Outfit';
+    display: block;
+}
+
+.artikel {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: .5rem;
+}
+.artikel-item {
+    display: flex;
+    color: transparent;
+    flex-direction: column;
+    height: 300px;
+    width: 300px;
+    position: relative;
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: #fff;
+    cursor: pointer;
+    background-size: cover;
+    background-image: url("https://source.unsplash.com/random");
+}
+.artikel-item::before {
+    position: absolute;
+    border-radius: 10px;
+    left: 0;
+    bottom: 0;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .7;
+    text-shadow: 2px 2px 2px 2px black;
+    transform-origin: 0 bottom 0;
+    transform: scaleY(0);
+    transition: 0.4s ease-out;
+}
+.artikel-item:hover .artikel-title {
+    color: #fff;
+}
+.artikel-item:hover:before {
+    transform: scaleY(1);
+}
+.artikel-title {
+    position: relative;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.333;
+    transition: 0.4s ease-out;
+}
+.artikel-btn{
+    position: relative;
+    opacity: 0;
+    transition: 1s;
+}
+.artikel-desc{
+    position: relative;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.333;
+    transition: 0.4s ease-out;
+}
+.artikel-item:hover .artikel-desc {
+    color: #fff;
+}
+.artikel-item:hover .artikel-btn {
+    opacity: 1;
+}
+
+
+/* Galeri */
+
+
+#galeri{
+    background-color: #55423D;
+    color: #fffffe;
+    min-height: 1000px;
+}
+
+.gallery {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: .5rem;
+}
+.gallery-item {
+    display: flex;
+    color: transparent;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    width: 300px;
+    position: relative;
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: #fff;
+    cursor: pointer;
+    background-size: cover;
+    background-image: url("https://source.unsplash.com/random");
+}
+.gallery-item::before {
+    position: absolute;
+    border-radius: 10px;
+    left: 0;
+    bottom: 0;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .7;
+    text-shadow: 2px 2px 2px 2px black;
+    transform-origin: 0 bottom 0;
+    transform: scaleY(0);
+    transition: 0.4s ease-out;
+}
+.gallery-item:hover .gallery-title {
+    color: #fff;
+}
+.gallery-item:hover:before {
+    transform: scaleY(1);
+}
+.gallery-title {
+    position: relative;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.333;
+    transition: 0.4s ease-out;
+}
