@@ -20,13 +20,18 @@ window.addEventListener('scroll', navbarlinksActive);
 // Artikel
 const artikelContainer = document.getElementById('artikelContainer');
 const artikelData = [
-  { title: 'Kartu 1', description: 'Deskripsi Kartu 1', button: 'Baca Selengkapnya' },
-  { title: 'Kartu 2', description: 'Deskripsi Kartu 2', button: 'Baca Selengkapnya' },
-  { title: 'Kartu 3', description: 'Deskripsi Kartu 3', button: 'Baca Selengkapnya' },
-  { title: 'Kartu 4', description: 'Deskripsi Kartu 4', button: 'Baca Selengkapnya' },
-  { title: 'Kartu 5', description: 'Deskripsi Kartu 5', button: 'Baca Selengkapnya' },
-  { title: 'Kartu 6', description: 'Deskripsi Kartu 6', button: 'Baca Selengkapnya' }
+  { id:1, title: 'Kartu 1', description: 'Deskripsi Kartu 1', button: 'Baca Selengkapnya' },
+  { id:2, title: 'Kartu 2', description: 'Deskripsi Kartu 2', button: 'Baca Selengkapnya' },
+  { id:3, title: 'Kartu 3', description: 'Deskripsi Kartu 3', button: 'Baca Selengkapnya' },
+  { id:4, title: 'Kartu 4', description: 'Deskripsi Kartu 4', button: 'Baca Selengkapnya' },
+  { id:5, title: 'Kartu 5', description: 'Deskripsi Kartu 5', button: 'Baca Selengkapnya' },
+  { id:6, title: 'Kartu 6', description: 'Deskripsi Kartu 6', button: 'Baca Selengkapnya' }
 ];
+
+function showDetail(id) {
+  // You can implement your logic to show details based on the id here
+  console.log(`Showing details for item with id ${id}`);
+}
 
 artikelData.forEach(item => {
   const col = document.createElement('div');
@@ -49,8 +54,8 @@ artikelData.forEach(item => {
   const button = document.createElement('a');
   button.classList.add('artikel-btn', 'btn', 'btn-secondary');
   button.textContent = item.button;
+  button.addEventListener('click', () => showDetail(item.id)); // Use event listener
 
-  
   // Gabungkan artikelItem
   artikelItem.appendChild(title);
   artikelItem.appendChild(description);
@@ -62,6 +67,7 @@ artikelData.forEach(item => {
   // masukkan col ke artikelcontainer
   artikelContainer.appendChild(col);
 });
+
 
 // Galery
 const galleryContainer = document.getElementById('galleryContainer');
@@ -131,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     function filterItems(filter) {
         console.log('Filtering by:', filter); // Debugging line
-        const gridItems = gridContainer.querySelectorAll('#galleryContainer');
+        const gridItems = gridContainer.querySelectorAll('.gallery');
         gridItems.forEach(item => {
             if (filter === '*' || item.classList.contains(filter)) {
                 item.style.display = 'block';
@@ -149,3 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
   });
+
+function showDetail(cardId) {
+ window.location.href = `detail.html?card=${cardId}`;
+}
