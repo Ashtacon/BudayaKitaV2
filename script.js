@@ -66,12 +66,12 @@ artikelData.forEach(item => {
 // Galery
 const galleryContainer = document.getElementById('galleryContainer');
 const galleryData = [
-  { title: 'Kartu 1'},
-  { title: 'Kartu 2'},
-  { title: 'Kartu 3'},
-  { title: 'Kartu 4'},
-  { title: 'Kartu 5'},
-  { title: 'Kartu 6'}
+  { title: 'Kartu 1', type: 'Batik'},
+  { title: 'Kartu 2', type: 'Tari'},
+  { title: 'Kartu 3', type: 'Batik'},
+  { title: 'Kartu 4', type: 'Pentas'},
+  { title: 'Kartu 5', type: 'Tari'},
+  { title: 'Kartu 6', type: 'Pentas'}
 ];
 
 galleryData.forEach(item => {
@@ -83,6 +83,7 @@ galleryData.forEach(item => {
 
   const gallery = document.createElement('div');
   gallery.classList.add('gallery');
+  gallery.classList.add(item.type);
   
   const title = document.createElement('h2');
   title.classList.add('gallery-title');
@@ -96,3 +97,55 @@ galleryData.forEach(item => {
 
   galleryContainer.appendChild(col); // Memindahkan col ke dalam galleryContainer
 });
+
+
+// GSAP
+gsap.to(".title", {duration: 3, delay:2, text: "BudayaKita"});
+gsap.to(".loading", {duration: 3, delay:2, opacity: 0, y:2000});
+gsap.from("#hero", {duration:3, delay:1, opacity: .7});
+gsap.from(".megamendung", {duration: 2, delay:1, y:-150, opacity: 0.1});
+
+// JQuery Code
+$(document).on("scroll",function(){
+    setTimeout(function() {
+      $(".loading").addClass("hidden");
+    }, 3000);
+    if ($(document).scrollTop() > 600){
+      $(".nav.navs").addClass("fixed-top");     
+    }else {
+      $(".nav.navs").removeClass("fixed-top");
+    }
+
+
+
+    if ($(document).scrollTop() > 100){
+        $(".title").addClass("fade")    
+      }else {
+        $(".title").removeClass("fade");
+      }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const gridContainer = document.getElementById('galleryContainer');
+    const filterButtons = document.querySelectorAll('button');
+    
+    function filterItems(filter) {
+        console.log('Filtering by:', filter); // Debugging line
+        const gridItems = gridContainer.querySelectorAll('#galleryContainer');
+        gridItems.forEach(item => {
+            if (filter === '*' || item.classList.contains(filter)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const filterValue = this.getAttribute('data-filter');
+            console.log('Button clicked with filter:', filterValue); // Debugging line
+            filterItems(filterValue);
+        });
+    });
+  });
