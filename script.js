@@ -131,7 +131,9 @@ galleryData.forEach(item => {
   const gallery = document.createElement('div');
   gallery.classList.add('gallery');
   gallery.classList.add(item.type);
-  
+
+  gallery.addEventListener('click', () => openLightbox(`img/galeri/${item.image}`));
+
   const title = document.createElement('h2');
   title.classList.add('gallery-title');
   title.textContent = item.title;
@@ -144,6 +146,31 @@ galleryData.forEach(item => {
 
   galleryContainer.appendChild(col); // Memindahkan col ke dalam galleryContainer
 });
+
+function openLightbox(imageSrc) {
+  var lightbox = document.getElementById('myLightbox');
+  var lightboxImage = lightbox.querySelector('img');
+  lightboxImage.src = imageSrc;
+  
+  // lightbox.style.display = 'block';
+  lightbox.classList.add('muncul');
+  
+  // Gunakan setTimeout untuk mengaktifkan transisi setelah elemen ditampilkan
+  setTimeout(function() {
+      lightbox.style.opacity = '1';
+  }, 10); // Nilai timeout bisa disesuaikan
+}
+
+
+function closeLightbox() {
+  var lightbox = document.getElementById('myLightbox');
+  lightbox.style.opacity = '0'; 
+  
+  setTimeout(function() {
+      lightbox.style.display = 'none';
+  }, 300);
+}
+
 
 
 // GSAP
