@@ -337,7 +337,7 @@ main{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #ffc0ad;
+  background-color: #55423d;
   border-radius: 15px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -356,10 +356,9 @@ main{
 .close-button:hover {
   position: absolute;
   top: 10px;
-  color: #9656a1;
+  color: #9656a1 !important;
   right: 25px;
   border-radius: 10px;
-  color: #e78fb3;
   font-size: 3rem;
   cursor: pointer;
 }
@@ -368,7 +367,7 @@ main{
   padding: 50px;
   width: 800px;
   height: 500px;
-  border-radius: 15px;
+  box-shadow: 2px 2px solid #140d0b;
 }
 
 
