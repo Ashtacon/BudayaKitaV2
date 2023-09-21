@@ -3,3 +3,23 @@
 body{
   font-family: 'Righteous';
 }
+
+#detail-image{
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+#detail-content{
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+img {
+  width: 76%;
+}
+
+.container{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
