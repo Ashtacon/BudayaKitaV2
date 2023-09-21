@@ -20,13 +20,51 @@ window.addEventListener('scroll', navbarlinksActive);
 // Artikel
 const artikelContainer = document.getElementById('artikelContainer');
 const artikelData = [
-  { id:1, title: 'Kartu 1', description: 'Deskripsi Kartu 1', button: 'Baca Selengkapnya' },
-  { id:2, title: 'Kartu 2', description: 'Deskripsi Kartu 2', button: 'Baca Selengkapnya' },
-  { id:3, title: 'Kartu 3', description: 'Deskripsi Kartu 3', button: 'Baca Selengkapnya' },
-  { id:4, title: 'Kartu 4', description: 'Deskripsi Kartu 4', button: 'Baca Selengkapnya' },
-  { id:5, title: 'Kartu 5', description: 'Deskripsi Kartu 5', button: 'Baca Selengkapnya' },
-  { id:6, title: 'Kartu 6', description: 'Deskripsi Kartu 6', button: 'Baca Selengkapnya' }
+  { 
+    id: 1,
+    title: 'Batik Tulis',
+    description: 'Seni menghias kain dengan tangan, merupakan bagian penting dari budaya Indonesia.',
+    button: 'Baca Selengkapnya',
+    image: 'batik.jpg'
+  },
+  { 
+    id: 2,
+    title: 'Tari Saman',
+    description: 'Tarian cepat dari suku Aceh yang menggambarkan kekompakan dan keindahan gerakan.',
+    button: 'Baca Selengkapnya',
+    image: 'tariSaman.jpg'
+  },
+  { 
+    id: 3,
+    title: 'Wayang Kulit',
+    description: 'Teater bayangan Jawa yang mempersembahkan cerita epik dari mitologi Hindu dan Ramayana.',
+    button: 'Baca Selengkapnya',
+    image: 'wayangKulit.jpg'
+  },
+  { 
+    id: 4,
+    title: 'Pencak Silat',
+    description: 'Seni bela diri tradisional Indonesia yang menggabungkan keindahan gerakan dengan teknik bertarung.',
+    button: 'Baca Selengkapnya',
+    image: 'pencakSilat.jpg'
+  },
+  { 
+    id: 5,
+    title: 'Upacara Adat Toraja',
+    description: 'Ritual unik dari Sulawesi Selatan yang melibatkan upacara pemakaman yang rumit.',
+    button: 'Baca Selengkapnya',
+    image: 'Upacara.jpg'
+  },
+  { 
+    id: 6,
+    title: 'Reog Ponorogo',
+    description: 'Tarian maskot dari Jawa Timur yang menggabungkan kekuatan fisik dengan seni kreatif.',
+    button: 'Baca Selengkapnya',
+    image: 'ReogPonorogo.jpg'
+  }
 ];
+
+
 
 function showDetail(id) {
   // You can implement your logic to show details based on the id here
@@ -42,15 +80,16 @@ artikelData.forEach(item => {
 
   const artikelItem = document.createElement('div');
   artikelItem.classList.add('artikel-item');
+  artikelItem.style.backgroundImage = `url(img/artikel/${item.image})`; // Set background image dynamically
   
   const title = document.createElement('h2');
   title.classList.add('artikel-title');
   title.textContent = item.title;
- 
+
   const description = document.createElement('p');
   description.classList.add('artikel-desc');
   description.textContent = item.description;
-  
+
   const button = document.createElement('a');
   button.classList.add('artikel-btn', 'btn', 'btn-secondary');
   button.textContent = item.button;
@@ -69,15 +108,16 @@ artikelData.forEach(item => {
 });
 
 
+
 // Galery
 const galleryContainer = document.getElementById('galleryContainer');
 const galleryData = [
-  { title: 'Kartu 1', type: 'Batik'},
-  { title: 'Kartu 2', type: 'Tari'},
-  { title: 'Kartu 3', type: 'Batik'},
-  { title: 'Kartu 4', type: 'Pentas'},
-  { title: 'Kartu 5', type: 'Tari'},
-  { title: 'Kartu 6', type: 'Pentas'}
+  { title: 'Batik Kraton', type: 'Batik', image:'batikKeraton.jpg'},
+  { title: 'Tari Saman', type: 'Tari', image:'tariSaman.jpg'},
+  { title: 'Batik Gentongan', type: 'Batik', image:'BatikGentongan.jpg'},
+  { title: 'Pencak Silat', type: 'BelaDiri', image:'PencakSilat.jpg'},
+  { title: 'Tari Piring', type: 'Tari', image:'tariPiring.png'},
+  { title: 'Perisai Diri', type: 'BelaDiri', image:'perisaiDiri.jpg'}
 ];
 
 galleryData.forEach(item => {
@@ -86,6 +126,7 @@ galleryData.forEach(item => {
 
   const galleryItem = document.createElement('div');
   galleryItem.classList.add('gallery-item');
+  galleryItem.style.backgroundImage = `url(img/galeri/${item.image})`;
 
   const gallery = document.createElement('div');
   gallery.classList.add('gallery');
@@ -122,7 +163,13 @@ $(document).on("scroll",function(){
       $(".nav.navs").removeClass("fixed-top");
     }
 
-
+     // Saat tombol dengan kelas 'nav-link' diklik
+     $('.nav-link').click(function(){
+      // Menghapus kelas 'active' dari semua tombol 'nav-link'
+      $('.nav-link').removeClass('active');
+      // Menambahkan kelas 'active' hanya pada tombol yang diklik
+      $(this).addClass('active');
+    });
 
     if ($(document).scrollTop() > 100){
         $(".title").addClass("fade")    
@@ -140,9 +187,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const gridItems = gridContainer.querySelectorAll('.gallery');
         gridItems.forEach(item => {
             if (filter === '*' || item.classList.contains(filter)) {
-                item.style.display = 'block';
+                // item.style.display = 'block';
+                item.classList.remove('fade');
             } else {
-                item.style.display = 'none';
+                // item.style.display = 'none';
+                item.classList.add('fade');
             }
         });
     }

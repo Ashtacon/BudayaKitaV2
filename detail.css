@@ -2,4 +2,91 @@
 
 body{
   font-family: 'Righteous';
+  padding: 20px;
+  background-color: #55423D;
+}
+
+#detail-image{
+  background-color: #ffc0ad;
+  text-align: center;
+  width: max-content;
+  padding: 50px 50px;
+  border: 2px solid #140d0b;
+  border-radius: 15px;
+  box-shadow: 2px 2px 10px black;
+}
+
+#detail-image img{
+  max-width: 300px;
+  max-height: 500px;
+  border-radius: 15px;
+  box-shadow: 1px 1px 10px rgb(0, 0, 0, .5);
+  transition: .5s ease-out;
+}
+#detail-image img:hover{
+  transform: scale(1.1);
+  filter: brightness(1.02);
+  transition: .5s ease-in;
+}
+.bg-javanese{
+  background-color: #55423D;
+}
+.nav{
+  padding: 20px;
+}
+.nav-item > *{
+  color: #fffffe !important;
+}
+.nav-item:hover > *{
+  color: #e78fb3 !important;
+  border-bottom: 2px solid #e78fb3;
+}
+#detail-content .judul, .asal{
+  text-align: center;
+  color: #fffffe;
+}
+.text-javanese{
+  color: #e78fb3 !important;
+  text-decoration: none;
+}
+.text-javanese:hover{
+  color: #9656a1 !important;
+  text-decoration: none;
+}
+.judul{
+  padding-top: 10px;
+  color: #e78fb3 !important;
+}
+.desc{
+  padding: 20px;
+  color: #fffffe;
+}
+
+@media (max-width: 576px) { 
+  .nav-item > *{
+    color: #fffffe !important;
+    font-size: .8rem;
+  }
+  #detail-image{
+    background-color: #ffc0ad;
+    text-align: center;
+    width: max-content;
+    padding: 50px 50px;
+    border: 2px solid #140d0b;
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px black;
+  }
+  
+  #detail-image img{
+    max-width: 200px;
+    max-height: 500px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 10px rgb(0, 0, 0, .5);
+    transition: .5s ease-out;
+  }
+  #detail-image img:hover{
+    transform: scale(1.1);
+    filter: brightness(1.02);
+    transition: .5s ease-in;
+  }
 }

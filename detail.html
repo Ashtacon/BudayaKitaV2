@@ -10,13 +10,35 @@
   </head>
 <body>
     <div class="container">
-        <div class="row">
-            <!-- Bagian Pertama -->
-            <div class="col-md-6" id="detail-image">
-             
-            </div>
-
-            <!-- Bagian Kedua -->
+      <div class="row">
+        <ul class="nav justify-content-center bg-javanese fixed-top">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Beranda</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#tentang">Tentang</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#artikel">Artikel</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#galeri">Galeri</a>
+          </li>
+        </ul>
+      </div>
+      <div class="row pt-5">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+          <ol class="breadcrumb pt-5">
+            <li class="breadcrumb-item"><a href="index.html" class="text-javanese">Beranda</a></li>
+            <li class="breadcrumb-item"><a href="index.html#artikel" class="text-javanese">Artikel</a></li>
+            <li class="breadcrumb-item active text-white" aria-current="page">Details</li>
+          </ol>
+        </nav>
+      </div>
+        <div class="row justify-content-center align-items-center py-5">
+            <!-- Bagian Image -->
+            <div class="col-md-6" id="detail-image"></div>
+            <!-- Bagian detail -->
             <div class="col-md-6" id="detail-content"></div>
         </div>
     </div>
@@ -25,7 +47,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
 
     <script>
       // Fungsi untuk mendapatkan nilai parameter 'card' dari URL
@@ -43,23 +66,60 @@
           const detailImage = document.getElementById('detail-image');
 
           const cardDetails = {
-            '1': { title: 'Detail Card 1', content: 'Isi detail card 1.', image: 'batik1.jpg', alt: 'altimg1' },
-            '2': { title: 'Detail Card 2', content: 'Isi detail card 2.', image: 'new-batik2.jpg', alt: 'altimg2' },
-            '3': { title: 'Detail Card 3', content: 'Isi detail card 3.', image: 'new-batik3.jpg', alt: 'altimg3' },
-            '4': { title: 'Detail Card 4', content: 'Isi detail card 4.', image: 'new-batik4.jpg', alt: 'altimg4' },
-            '5': { title: 'Detail Card 5', content: 'Isi detail card 5.', image: 'new-batik5.jpg', alt: 'altimg5' },
-            '6': { title: 'Detail Card 6', content: 'Isi detail card 6.', image: 'new-batik6.jpg', alt: 'altimg6' },
-            // Add more card details as needed
+            '1': {
+                title: 'Batik Tulis',
+                asal: 'Jawa Tengah',
+                desc: 'Batik Tulis adalah sebuah warisan seni budaya Indonesia yang kaya akan sejarah dan makna. Proses pembuatan batik tulis melibatkan banyak tahapan yang memerlukan keahlian khusus. Para seniman batik menggunakan teknik menulis lilin secara manual untuk membuat pola dan menggambar motif-motif indah pada kain. Setiap kain batik tulis adalah karya seni unik yang memerlukan waktu dan perhatian hingga selesai. Motif-motif batik sering kali mencerminkan budaya, nilai, dan sejarah Indonesia. Batik Tulis bukan hanya kain, tetapi juga identitas bangsa Indonesia.',
+                image: 'batik.jpg',
+                alt: 'batikTulis'
+            },
+            '2': {
+                title: 'Tari Saman',
+                asal: 'Aceh',
+                desc: 'Tari Saman adalah sebuah keajaiban gerakan dan ritme yang berasal dari provinsi Aceh, Indonesia. Tarian ini menampilkan harmoni antara gerakan tangan yang cepat dan musik yang menggetarkan jiwa. Tarian Saman dimainkan oleh sekelompok penari yang duduk bersila dan bergerak secara bersama-sama dengan gerakan tangan yang kompleks dan selaras. Ini bukan hanya tarian, tetapi juga simbol kebersamaan dan kekompakan dalam budaya Aceh. Tarian Saman adalah contoh sempurna dari bagaimana seni dapat menghubungkan orang dan merayakan kekayaan budaya.',
+                image: 'tariSaman.jpg',
+                alt: 'tariSaman'
+            },
+            '3': {
+                title: 'Wayang Kulit',
+                asal: 'Jawa',
+                desc: 'Wayang Kulit adalah bentuk seni pertunjukan tradisional yang penuh dengan keajaiban dan magis. Pertunjukan Wayang Kulit menggabungkan seni teater dengan bayangan kulit yang diproyeksikan pada layar. Seorang dalang (pemimpin pertunjukan) memainkan berbagai karakter dalam cerita epik dengan menggerakkan boneka kulit dan mengisi suara karakter tersebut. Wayang Kulit bukan hanya hiburan, tetapi juga sarana untuk menyampaikan nilai-nilai moral dan sejarah kepada masyarakat. Ini adalah contoh nyata bagaimana seni dapat menjadi jendela ke dalam warisan budaya.',
+                image: 'wayangKulit.jpg',
+                alt: 'wayangKulit'
+            },
+            '4': {
+                title: 'Pencak Silat',
+                asal: 'Sumatra',
+                desc: 'Pencak Silat adalah seni bela diri yang tak hanya tentang fisik, tetapi juga tentang spiritualitas dan koneksi dengan alam. Para pesilat belajar teknik-teknik bertarung yang membutuhkan keseimbangan, kekuatan, dan kelincahan. Pencak Silat tidak hanya tentang pertarungan fisik, tetapi juga mengajarkan nilai-nilai seperti disiplin diri, pengendalian emosi, dan menghormati lawan. Ini adalah seni yang telah mewarnai budaya Indonesia selama berabad-abad dan tetap menjadi bagian penting dari identitasnya.',
+                image: 'PencakSilat.jpg',
+                alt: 'pencakSilat'
+            },
+            '5': {
+                title: 'Upacara Adat Toraja',
+                asal: 'Sulawesi Selatan',
+                desc: 'Upacara Adat Toraja adalah tontonan spektakuler yang menggambarkan kekayaan budaya masyarakat Toraja. Upacara ini melibatkan serangkaian ritual yang mendalam, mulai dari pemakaman tradisional hingga pernikahan adat. Setiap upacara ini memadukan musik, tarian, dan persembahan dalam sebuah perayaan yang penuh makna. Upacara Adat Toraja adalah contoh nyata bagaimana budaya dan agama saling terkait dalam kehidupan sehari-hari.',
+                image: 'Upacara.jpg',
+                alt: 'Upacara Adat Toraja'
+            },
+            '6': {
+                title: 'Reog Ponorogo',
+                asal: 'Jawa Timur',
+                desc: 'Reog Ponorogo adalah pertunjukan teater yang penuh dengan simbolisme dan misteri. Pertunjukan ini melibatkan penari dengan topeng raksasa yang memainkan karakter singa dan makhluk lainnya. Dalam pertunjukan ini, penari harus mengangkat topeng yang berat sambil menari dengan gerakan dinamis. Reog Ponorogo bukan hanya hiburan, tetapi juga simbol kekuatan dan semangat. Ini adalah contoh nyata bagaimana seni dapat menggugah perasaan dan menginspirasi penonton.',
+                image: 'ReogPonorogo.jpg',
+                alt: 'ReogPonorogo'
+            }
+            // Anda bisa terus menambahkan data card sesuai kebutuhan
         };
 
 
-          const cardDetail = cardDetails[cardId];
 
+          const cardDetail = cardDetails[cardId];
           if (cardDetail) {
               // Clear the previous content
-              detailImage.innerHTML = `<img src="img/${cardDetail.image}" alt="${cardDetail.alt}">`;
-              detailContent.innerHTML = `<h1 id="jud-1">${cardDetail.title}</h1>
-              <p id="desc-1">${cardDetail.content}</p>`;
+              detailImage.innerHTML = `<img src="img/detail/${cardDetail.image}" alt="${cardDetail.alt}">`;
+              detailContent.innerHTML = `<h1 class="judul">${cardDetail.title}</h1>
+                                         <p class="asal">Asal : ${cardDetail.asal}</p>
+                                         <p class="desc">${cardDetail.desc}</p>`;
           } else {
               detailContent.innerHTML = '<p>Kartu tidak ditemukan.</p>';
           }
@@ -70,8 +130,7 @@
 
       // Tampilkan konten detail sesuai dengan ID card yang diterima
       showCardDetail(cardId);
-
-
     </script>
+ 
   </body>
 </html>
