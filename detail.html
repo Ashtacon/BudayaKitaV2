@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Dua Bagian</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="detail.css">
+  </head>
+<body>
+    <div class="container">
+        <div class="row">
+            <!-- Bagian Pertama -->
+            <div class="col-md-6">
+              <div id="carouselExampleIndicators" class="carousel slide">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                  </div>
+                  <div class="carousel-item">
+                  </div>
+                  <div class="carousel-item">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Bagian Kedua -->
+            <div class="col-md-6" id="detail-content"></div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS (Opsional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+
+    <script>
+      // Fungsi untuk mendapatkan nilai parameter 'card' dari URL
+      function getCardIdFromUrl() {
+          const queryParams = new URLSearchParams(window.location.search);
+          return queryParams.get('card');
+      }
+
+      // Get references to the carousel-inner and the parent div
+      const carouselInner = document.querySelector('.carousel-inner');
+
+      // Fungsi untuk menampilkan konten detail sesuai dengan ID card
+      function showCardDetail(cardId) {
+          const detailContent = document.getElementById('detail-content');
+          const cardDetails = {
+              '1': { title: 'Detail Card 1', content: 'Isi detail card 1.', Image: 'new-batik1.jpg', alt: 'altimg1' },
+              '2': { title: 'Detail Card 2', content: 'Isi detail card 2.', Image: 'new-batik2.jpg', alt: 'altimg2' },
+              '3': { title: 'Detail Card 3', content: 'Isi detail card 3.', Image: 'new-batik3.jpg', alt: 'altimg3' },
+              '4': { title: 'Detail Card 4', content: 'Isi detail card 4.', Image: 'new-batik4.jpg', alt: 'altimg4' },
+              '5': { title: 'Detail Card 5', content: 'Isi detail card 5.', Image: 'new-batik5.jpg', alt: 'altimg5' },
+              '6': { title: 'Detail Card 6', content: 'Isi detail card 6.', Image: 'new-batik6.jpg', alt: 'altimg6' },
+              // Add more card details as needed
+          };
+
+          const cardDetail = cardDetails[cardId];
+
+          if (cardDetail) {
+              // Clear the previous content
+              carouselInner.innerHTML = '';
+
+              const newImg = document.createElement('img');
+              newImg.src = `img/${cardDetail.Image}`;
+              newImg.className = 'd-block w-100';
+              newImg.alt = `${cardDetail.alt}`;
+
+              carouselInner.appendChild(newImg);
+              
+              detailContent.innerHTML = `<h1 id="jud-1">${cardDetail.title}</h1>
+              <p id="desc-1">${cardDetail.content}</p>`;
+          } else {
+              detailContent.innerHTML = '<p>Kartu tidak ditemukan.</p>';
+          }
+      }
+
+      // Ambil nilai parameter 'card' dari URL
+      var cardId = getCardIdFromUrl();
+
+      // Tampilkan konten detail sesuai dengan ID card yang diterima
+      showCardDetail(cardId);
+
+
+    </script>
+  </body>
+</html>
