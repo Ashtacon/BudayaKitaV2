@@ -167,6 +167,7 @@ function closeLightbox() {
   lightbox.style.opacity = '0'; 
   
   setTimeout(function() {
+      lightbox.classList.remove('muncul');
       lightbox.style.display = 'none';
   }, 300);
 }
